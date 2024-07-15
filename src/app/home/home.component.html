@@ -1,0 +1,36 @@
+
+<div class="h-100 flex flex-column justify-content-center align-item-center">
+
+  <div class="flex justify-content-center flex-wrap gap-6">
+    <div class="flex">
+      <p-dropdown [style]="{width: '220px'}" [options]="languages" [(ngModel)]="selectInputLanguage" optionLabel="label"
+        placeholder="Select a Language" (onChange)="handleInput($event)" />
+    </div>
+    <div class="flex">
+      <p-dropdown [style]="{width: '220px'}" [options]="languages" [(ngModel)]="selectOutputLanguage" optionLabel="label"
+        placeholder="Select a Language" (onChange)="handleOutput($event)" />
+    </div>
+  </div>
+  
+  <div class="flex justify-content-center flex-wrap mt-4 mb-4 gap-3">
+    <input type="text" [style]="{width: '370px'}" pInputText placeholder="OPENAI_API_KEY" [(ngModel)]="apiKey" /> 
+    <p-button label="Convert" [loading]="loading" (click)="sendCodeConverter()"/>
+  </div>
+  
+  <div class="grid">
+    <div class="col-6 flex justify-content-end">
+      <nu-monaco-editor [height]="height" style="width: 70%;" [(ngModel)]="input" [options]="editorOptionsInput" />
+    </div>
+    <div class="col-6">
+      <nu-monaco-editor [height]="height" style="width: 70%;" [(ngModel)]="output" [options]="editorOptionsOutput" [disabled]="true" />
+    </div>
+  </div>
+  
+  <div class="flex justify-content-center flex-wrap mt-4 mb-4 gap-6" *ngIf="isShowCopy">
+    <p-button label="Copy" severity="success" (click)="copyCodeButton()"/>
+  </div>
+
+</div>
+
+
+<p-toast />

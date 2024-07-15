@@ -15,6 +15,13 @@
       "prefix": "app",
       "architect": {
         "build": {
+          "assets": [
+            {
+              "glob": "**/*",
+              "input": "node_modules/monaco-editor/min/vs",
+              "output": "/lib/vs"
+            }
+          ],
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/front-code-converter",
@@ -30,6 +37,9 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeflex/primeflex.css",
               "src/styles.scss"
             ],
             "scripts": [],
